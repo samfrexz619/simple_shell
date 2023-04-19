@@ -37,8 +37,8 @@ typedef struct data
 	int status;
 	int counter;
 	char **_environ;
-	char *_pid;
-} data_shell;
+	char *pid;
+} data_sh;
 
 
 #endif
