@@ -61,7 +61,41 @@ typedef struct line_lists
 	char *line;
 	struct line_lists *next;
 } line_list;
+/**
+ * struct rvar_list -  linked list
+ * @len_var: length of the var
+ * @val: value of the var
+ * @len_val: length of the value
+ * @next: next node
+ * Desc: list to store variables
+ */
+typedef struct rvar_list
+{
+	int len_var;
+	char *val;
+	int len_val;
+	struct rvar_list *next;
+} r_var;
 
+/**
+ * struct builtin_s - Builtin struct
+ * @name: The name of the cmd builtin i.e cd, exit, env
+ * @f: data type pointer function.
+ */
+typedef struct builtin_s
+{
+	char *name;
+	int (*f)(data_sh *datash);
+} built_in;
 
+/* 0-get_line.c */
+void _line(char **lineptr, size_t *num, char *buff, size_t sb);
+ssize_t get_line(char **lineptr, size_t *num, FILE *stream);
+
+/* 1-get_builtin */
+int (*get_builtin(char *cmd))(data_sh *datash);
+
+/* get_err.c */
+int get_err(data_sh *datash, int eval);
 
 #endif
