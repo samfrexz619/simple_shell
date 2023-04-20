@@ -27,7 +27,7 @@ extern char **environ;
  * @status: prev stat of the shell
  * @counter: lines counter
  * @_environ: env var
- * @_pid: process ID
+ * @pid: process ID
  */
 typedef struct data
 {
@@ -39,6 +39,29 @@ typedef struct data
 	char **_environ;
 	char *pid;
 } data_sh;
+/**
+ * struct sep_lists - linked list
+ * @separator: ; | &
+ * @next: next node
+ * Desc: linked list to store separators
+ */
+typedef struct sep_lists
+{
+	char separator;
+	struct sep_lists *next;
+} sep_list;
+/**
+ * struct line_lists - linked list
+ * @line: cmd line
+ * @next: next node
+ * Desc: linked list to store command lines
+ */
+typedef struct line_lists
+{
+	char *line;
+	struct line_lists *next;
+} line_list;
+
 
 
 #endif
