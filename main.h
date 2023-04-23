@@ -22,7 +22,7 @@ extern char **environ;
 /**
  * struct data - struct contains all relevant data
  * @av: arg vec
- * @input: cmd line entered by the user
+ * @inp: cmd line entered by the user
  * @args: tokens of the cmd line
  * @status: prev stat of the shell
  * @counter: lines counter
@@ -32,7 +32,7 @@ extern char **environ;
 typedef struct data
 {
 	char **av;
-	char *input;
+	char *inp;
 	char **args;
 	int status;
 	int counter;
@@ -88,14 +88,50 @@ typedef struct builtin_s
 	int (*f)(data_sh *datash);
 } built_in;
 
-/* 0-get_line.c */
-void _line(char **lineptr, size_t *num, char *buff, size_t sb);
-ssize_t get_line(char **lineptr, size_t *num, FILE *stream);
-
 /* 1-get_builtin */
 int (*get_builtin(char *cmd))(data_sh *datash);
 
 /* get_err.c */
 int get_err(data_sh *datash, int eval);
 
+/* cd_dot.c */
+void cd_dot(data_sh *datash);
+void cd_to(data_sh *datash);
+void cd_prev(data_sh *datash);
+void cd_home(data_sh *datash);
+
+/* cd_sh.c */
+int cd_shell(data_sh *datash);
+
+/* syntax_error.c */
+int count_char(char *inp, int idx);
+int err_sep_op(char *inp, int idx, char last);
+int first_char(char *inp, int *idx);
+void print_syntax_err(data_sh *datash, char *inp, int idx, int bool);
+int check_syntax_err(data_sh *datash, char *inp);
+
+/* cmdexec.c */
+int cdir(char *path, int *idx);
+char *_which(char *cmd, char **_environ);
+int is_exec(data_sh *datash);
+int check_err_cmd(char *dir, data_sh *datash);
+int cmd_exec(data_sh *datash);
+
+/* split.c */
+char *swap_char(char *inp, int bool);
+void add_nodes(sep_list **head_s, line_list **head_l, char *inp);
+void move_next(sep_list **list_s, line_list **list_l, data_sh *datash);
+int split_com(data_sh *datash, char *inp);
+char **split_line(char *inp);
+
+/* get_line.c */
+void assign_line(char **lineptr, size_t *nl, char *buffer, size_t jb);
+ssize_t get_line(char **lineptr, size_t *nl, FILE *stream);
+
+/* shell_loop.c */
+char *del_comment(char *inp);
+void shell_loop(data_sh *datash);
+
+/* rd_line.c */
+char *read_line(int *idx_eof);
 #endif

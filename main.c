@@ -28,7 +28,7 @@ void _set(data_sh *datash, char **av)
 	unsigned int idx;
 
 	datash->av = av;
-	datash->input = NULL;
+	datash->inp = NULL;
 	datash->args = NULL;
 	datash->status = 0;
 	datash->counter = 1;
