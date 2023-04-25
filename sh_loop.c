@@ -43,7 +43,7 @@ void shell_loop(data_sh *datash)
 	loop = 1;
 	while (loop == 1)
 	{
-		write(STDIN_FILENO, "^-^ ", 4);
+		write(STDIN_FILENO, "($)  ", 4);
 		inp = read_line(&idx_eof);
 		if (idx_eof != -1)
 		{
@@ -57,7 +57,7 @@ void shell_loop(data_sh *datash)
 				free(inp);
 				continue;
 			}
-			inp = rep_var(inp, datash, inp);
+			inp = rep_var(inp, datash);
 			loop = split_cmd(datash, inp);
 			datash->counter += 1;
 			free(inp);

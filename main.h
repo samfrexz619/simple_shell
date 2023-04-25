@@ -121,17 +121,107 @@ int cmd_exec(data_sh *datash);
 char *swap_char(char *inp, int bool);
 void add_nodes(sep_list **head_s, line_list **head_l, char *inp);
 void move_next(sep_list **list_s, line_list **list_l, data_sh *datash);
-int split_com(data_sh *datash, char *inp);
+int split_cmd(data_sh *datash, char *inp);
 char **split_line(char *inp);
 
 /* get_line.c */
 void assign_line(char **lineptr, size_t *nl, char *buffer, size_t jb);
 ssize_t get_line(char **lineptr, size_t *nl, FILE *stream);
 
-/* shell_loop.c */
+/* sh_loop.c */
 char *del_comment(char *inp);
 void shell_loop(data_sh *datash);
 
 /* rd_line.c */
 char *read_line(int *idx_eof);
+
+/* ax_err.c */
+char *strcat_cd(data_sh *datash, char *msg, char *err, char *ver_str);
+char *err_get_cd(data_sh *datash);
+char *err_not_found(data_sh *datash);
+char *err_exit_shell(data_sh *datash);
+
+/* ax_err1.c */
+char *err_get_alias(char **args);
+char *err_env(data_sh *datash);
+char *err_syntax(char **args);
+char *err_permission(char **args);
+char *err_path_126(data_sh *datash);
+
+/* ax_elp.c */
+void aux_help_env(void);
+void aux_help_setenv(void);
+void aux_help_unsetenv(void);
+void aux_help_gen(void);
+void aux_help_exit(void);
+
+/* ax_elp1.c */
+void aux_help(void);
+void aux_help_aka(void);
+void aux_help_cd(void);
+
+/* ax_ls.c */
+sep_list *add_sep_node_end(sep_list **head, char sep);
+void free_sep_list(sep_list **head);
+line_list *add_line_node_end(line_list **head, char *line);
+void free_line_list(line_list **head);
+
+/* ax_ls1.c */
+r_var *add_rvar_node(r_var **head, int lvar, char *var, int lval);
+void free_rvar_list(r_var **head);
+
+/* ax_m.c */
+void _memcpy(void *newptr, const void *ptr, unsigned int size);
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
+char **_reallocdp(char **ptr, unsigned int old_size, unsigned int new_size);
+
+/* ax_stdlb.c */
+int get_len(int num);
+char *aux_itoa(int num);
+int _atoi(char *str);
+
+/* ax_str*/
+char *_strcat(char *dest, const char *src);
+char *_strcpy(char *dest, char *src);
+int _strcmp(char *str, char *str2);
+char *_strchr(char *str, char c);
+int _strspn(char *str, char *acc);
+
+/* ax_str1.c */
+char *_strdup(const char *str);
+int _strlen(const char *str);
+int cmp_chars(char str[], const char *dlim);
+char *_strtok(char str[], const char *dlim);
+int _isdigit(const char *str);
+
+/* ax_str2.c */
+void rev_str(char *str);
+
+/* env.c */
+char *_getenv(const char *name, char **_environ);
+int _env(data_sh *datash);
+
+/* env1.c */
+char *cpy_info(char *name, char *val);
+void set_env(char *name, char *val, data_sh *datash);
+int _setenv(data_sh *datash);
+int _unsetenv(data_sh *datash);
+
+/* exe_line */
+int exec_line(data_sh *datash);
+
+/* ext_shell.c */
+int exit_shell(data_sh *datash);
+
+/* g_sigint.c */
+void get_sigint(int sig);
+
+/* rep_var.c */
+void check_env(r_var **hd, char *inp, data_sh *data);
+int check_vars(r_var **hd, char *inp, char *st, data_sh *data);
+char *replaced_input(r_var **head, char *inp, char *new_inp, int nlen);
+char *rep_var(char *inp, data_sh *datash);
+
+/* g_help.c */
+int get_help(data_sh *datash);
 #endif

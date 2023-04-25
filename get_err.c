@@ -12,19 +12,19 @@ int get_err(data_sh *datash, int eval)
 	switch (eval)
 	{
 	case -1:
-		err = error_env(datash);
+		err = err_env(datash);
 		break;
 	case 126:
-		err = error_path_126(datash);
+		err = err_path_126(datash);
 		break;
 	case 127:
-		err = error_not_found(datash);
+		err = err_not_found(datash);
 		break;
 	case 2:
 		if (_strcmp("exit", datash->args[0]) == 0)
-			err = error_exit_shell(datash);
+			err = err_exit_shell(datash);
 		else if (_strcmp("cd", datash->args[0]) == 0)
-			err = error_get_cd(datash);
+			err = err_get_cd(datash);
 		break;
 	}
 	if (err)

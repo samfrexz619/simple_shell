@@ -41,7 +41,7 @@ char *_which(char *cmd, char **_environ)
 		idx = 0;
 		while (token_path != NULL)
 		{
-			if (is_cdir(path, &idx))
+			if (cdir(path, &idx))
 				if (stat(cmd, &st) == 0)
 					return (cmd);
 			len_dir = _strlen(token_path);
@@ -80,7 +80,7 @@ int is_exec(data_sh *datash)
 	char *inp;
 
 	inp = datash->args[0];
-	for (idx = 0; inp[i]; idx++)
+	for (idx = 0; inp[idx]; idx++)
 	{
 		if (inp[idx] == '.')
 		{

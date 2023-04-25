@@ -25,14 +25,14 @@ void cd_dot(data_sh *datash)
 		return;
 	}
 	cp_strtok_pwd = cp_pwd;
-	rev_string(cp_strtok_pwd);
+	rev_str(cp_strtok_pwd);
 	cp_strtok_pwd = _strtok(cp_strtok_pwd, "/");
 	if (cp_strtok_pwd != NULL)
 	{
 		cp_strtok_pwd = _strtok(NULL, "\0");
 
 		if (cp_strtok_pwd != NULL)
-			rev_string(cp_strtok_pwd);
+			rev_str(cp_strtok_pwd);
 	}
 	if (cp_strtok_pwd != NULL)
 	{
@@ -66,7 +66,7 @@ void cd_to(data_sh *datash)
 		return;
 	}
 	cp_pwd = _strdup(pwd);
-	set_env("OLDPWD", cp_pwd, dtash);
+	set_env("OLDPWD", cp_pwd, datash);
 	cp_dir = _strdup(dir);
 	set_env("PWD", cp_dir, datash);
 
