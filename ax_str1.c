@@ -2,7 +2,7 @@
 /**
  * _strdup - duplicates a str
  * @str: string
- * Return: str
+ * Return: str - return str
  */
 char *_strdup(const char *str)
 {
@@ -59,7 +59,7 @@ int cmp_chars(char str[], const char *dlim)
  * _strtok - splits a str
  * @str: str
  * @dlim: delimiter
- * Return: str
+ * Return: str - return str
  */
 char *_strtok(char str[], const char *dlim)
 {
