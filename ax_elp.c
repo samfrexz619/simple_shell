@@ -1,4 +1,4 @@
-n#include "main.h"
+#include "main.h"
 /**
  * aux_help_env - help info
  * Returns nth
