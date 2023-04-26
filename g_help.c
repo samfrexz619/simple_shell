@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * get_help - help msgs
+ * get_help - help msg
  * @datash: data
  * Return: 0
  */
