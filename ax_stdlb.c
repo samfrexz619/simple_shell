@@ -2,7 +2,7 @@
 /**
  * get_len - get length
  * @num: number
- * Return: length
+ * Return: length - returns length
  */
 int get_len(int num)
 {
@@ -29,7 +29,7 @@ int get_len(int num)
 /**
  * aux_itoa - converts int
  * @num: num
- * Return: str
+ * Return: str - returns string
  */
 char *aux_itoa(int num)
 {
@@ -66,7 +66,7 @@ char *aux_itoa(int num)
 /**
  * _atoi - converts str
  * @str: string
- * Return: int
+ * Return: int - returns int
  */
 int _atoi(char *str)
 {
