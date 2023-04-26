@@ -32,7 +32,7 @@ void assign_line(char **lineptr, size_t *nl, char *buffer, size_t jb)
 	}
 }
 /**
- * get_line - read input from stream
+ * getLine - read input from stream
  * @lineptr: stores input str
  * @nl: size of lineptr
  * @strm: stream

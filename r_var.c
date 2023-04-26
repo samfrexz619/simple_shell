@@ -1,12 +1,12 @@
 #include "main.h"
 /**
- * check_env - checks for the type of var
+ * checkEnv - checks for the type of var
  * @hd: head
  * @inp: input
  * @data: data
  * Return: nth - returns nth
  */
-void check_env(st_var **hd, char *inp, data_sh *data)
+void checkEnv(st_var **hd, char *inp, data_sh *data)
 {
 	int row, chr, j, lenVal;
 	char **_envr;
@@ -39,14 +39,14 @@ void check_env(st_var **hd, char *inp, data_sh *data)
 	addRvarNd(hd, j, NULL, 0);
 }
 /**
- * check_vars - check typed var
+ * checkVar - check typed var
  * @hd: head
  * @inp: input str
  * @stat: status
  * @data: data
  * Return: nth
  */
-int check_vars(st_var **hd, char *inp, char *stat, data_sh *data)
+int checkVar(st_var **hd, char *inp, char *stat, data_sh *data)
 {
 	int idx, lenst, lpd;
 
@@ -72,26 +72,26 @@ int check_vars(st_var **hd, char *inp, char *stat, data_sh *data)
 			else if (inp[idx + 1] == ';')
 				addRvarNd(hd, 0, NULL, 0);
 			else
-				check_env(hd, inp + idx, data);
+				checkEnv(hd, inp + idx, data);
 		}
 	}
 
 	return (idx);
 }
 /**
- * replaced_input -replaces str
- * @head: head
+ * rep_inp -replaces str
+ * @hd: head
  * @inp: input
  * @new_inp: new input
  * @nlen: length
  * Return: replaced str
  */
-char *replaced_input(st_var **head, char *inp, char *new_inp, int nlen)
+char *rep_inp(st_var **hd, char *inp, char *new_inp, int nlen)
 {
 	st_var *idx;
 	int i, j, k;
 
-	idx = *head;
+	idx = *hd;
 	for (j = i = 0; i < nlen; i++)
 	{
 		if (inp[j] == '$')
@@ -129,29 +129,29 @@ char *replaced_input(st_var **head, char *inp, char *new_inp, int nlen)
 	return (new_inp);
 }
 /**
- * rep_var - replace str
+ * repVar - replace str
  * @inp: input
  * @datash: data
  * Return: replaced str
  */
-char *rep_var(char *inp, data_sh *datash)
+char *repVar(char *inp, data_sh *datash)
 {
-	st_var *head, *idx;
+	st_var *hd, *idx;
 	char *status, *new_inp;
 	int olen, nlen;
 
 	status = x_itoa(datash->status);
-	head = NULL;
+	hd = NULL;
 
-	olen = check_vars(&head, inp, status, datash);
+	olen = checkVar(&hd, inp, status, datash);
 
-	if (head == NULL)
+	if (hd == NULL)
 	{
 		free(status);
 		return (inp);
 	}
 
-	idx = head;
+	idx = hd;
 	nlen = 0;
 
 	while (idx != NULL)
@@ -165,11 +165,11 @@ char *rep_var(char *inp, data_sh *datash)
 	new_inp = malloc(sizeof(char) * (nlen + 1));
 	new_inp[nlen] = '\0';
 
-	new_inp = replaced_input(&head, inp, new_inp, nlen);
+	new_inp = rep_inp(&hd, inp, new_inp, nlen);
 
 	free(inp);
 	free(status);
-	freeRvarLs(&head);
+	freeRvarLs(&hd);
 
 	return (new_inp);
 }

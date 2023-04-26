@@ -133,7 +133,7 @@ char *del_comment(char *inp);
 void shell_lp(data_sh *datash);
 
 /* rd_line.c */
-char *read_line(int *idx_eof);
+char *read_ln(int *idx_eof);
 
 /* ax_err.c */
 char *strcat_cd(data_sh *datash, char *msg, char *err, char *_str);
@@ -217,10 +217,10 @@ int xt_shell(data_sh *datash);
 void get_sigint(int sig);
 
 /* r_var.c */
-void check_env(st_var **hd, char *inp, data_sh *data);
-int check_vars(st_var **hd, char *inp, char *stat, data_sh *data);
-char *replaced_input(st_var **head, char *inp, char *new_inp, int nlen);
-char *rep_var(char *inp, data_sh *datash);
+void checkEnv(st_var **hd, char *inp, data_sh *data);
+int checkVar(st_var **hd, char *inp, char *stat, data_sh *data);
+char *rep_inp(st_var **hd, char *inp, char *new_inp, int nlen);
+char *repVar(char *inp, data_sh *datash);
 
 /* g_help.c */
 int _help(data_sh *datash);

@@ -44,7 +44,7 @@ void shell_lp(data_sh *datash)
 	while (lp == 1)
 	{
 		write(STDIN_FILENO, "($)  ", 4);
-		inp = read_line(&idx_eof);
+		inp = read_ln(&idx_eof);
 		if (idx_eof != -1)
 		{
 			inp = del_comment(inp);
@@ -57,7 +57,7 @@ void shell_lp(data_sh *datash)
 				free(inp);
 				continue;
 			}
-			inp = rep_var(inp, datash);
+			inp = repVar(inp, datash);
 			lp = split_cmd(datash, inp);
 			datash->counter += 1;
 			free(inp);

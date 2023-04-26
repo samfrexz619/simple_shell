@@ -1,10 +1,10 @@
 #include "main.h"
 /**
- * free_data - frees data
+ * fr_data - frees data
  * @datash: data
  * Return: Nothing
  */
-void free_data(data_sh *datash)
+void fr_data(data_sh *datash)
 {
 	unsigned int idx;
 
@@ -66,7 +66,7 @@ int main(int ac, char **av)
 	signal(SIGINT, get_sigint);
 	_set(&datash, av);
 	shell_lp(&datash);
-	free_data(&datash);
+	fr_data(&datash);
 	if (datash.status < 0)
 		return (255);
 	return (datash.status);
