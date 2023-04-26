@@ -2,7 +2,7 @@
 /**
  * free_data - frees data
  * @datash: data
- * Return: nothing
+ * Return: Nothing
  */
 void free_data(data_sh *datash)
 {
