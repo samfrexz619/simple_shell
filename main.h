@@ -16,7 +16,7 @@
 #define TOK_BSIZE 128
 #define TOK_DLIM " \t\r\n\a"
 
-/*points to an array*/
+/*Points to an array*/
 extern char **environ;
 
 /**
