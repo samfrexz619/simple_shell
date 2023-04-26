@@ -108,7 +108,7 @@ int is_exec(data_sh *datash)
 	{
 		return (idx);
 	}
-	get_err(datash, 127);
+	getErr(datash, 127);
 	return (-1);
 }
 /**
@@ -121,14 +121,14 @@ int check_err_cmd(char *dir, data_sh *datash)
 {
 	if (dir == NULL)
 	{
-		get_err(datash, 127);
+		getErr(datash, 127);
 		return (1);
 	}
 	if (_strcmp(datash->args[0], dir) != 0)
 	{
 		if (access(dir, X_OK) == -1)
 		{
-			get_err(datash, 126);
+			getErr(datash, 126);
 			free(dir);
 			return (1);
 		}
@@ -138,7 +138,7 @@ int check_err_cmd(char *dir, data_sh *datash)
 	{
 		if (access(datash->args[0], X_OK) == -1)
 		{
-			get_err(datash, 126);
+			getErr(datash, 126);
 			return (1);
 		}
 	}

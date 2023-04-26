@@ -92,7 +92,7 @@ typedef struct builtin_s
 int (*get_builtin(char *cmd))(data_sh *datash);
 
 /* get_err.c */
-int get_err(data_sh *datash, int eval);
+int getErr(data_sh *datash, int eval);
 
 /* cd_dot.c */
 void cd_dot(data_sh *datash);
@@ -136,29 +136,29 @@ void shell_loop(data_sh *datash);
 char *read_line(int *idx_eof);
 
 /* ax_err.c */
-char *strcat_cd(data_sh *datash, char *msg, char *err, char *ver_str);
-char *err_get_cd(data_sh *datash);
-char *err_not_found(data_sh *datash);
-char *err_exit_shell(data_sh *datash);
+char *strcat_cd(data_sh *datash, char *msg, char *err, char *_str);
+char *errCd(data_sh *datash);
+char *errNotf(data_sh *datash);
+char *errExitsh(data_sh *datash);
 
 /* ax_err1.c */
 char *err_get_alias(char **args);
-char *err_env(data_sh *datash);
+char *errEnv(data_sh *datash);
 char *err_syntax(char **args);
 char *err_permission(char **args);
-char *err_path_126(data_sh *datash);
+char *errPath126(data_sh *datash);
 
 /* ax_elp.c */
-void aux_help_env(void);
-void aux_help_setenv(void);
-void aux_help_unsetenv(void);
-void aux_help_gen(void);
-void aux_help_exit(void);
+void xh_env(void);
+void xh_setenv(void);
+void xh_unsetenv(void);
+void xh_gen(void);
+void xh_exit(void);
 
 /* ax_elp1.c */
-void aux_help(void);
-void aux_help_aka(void);
-void aux_help_cd(void);
+void x_help(void);
+void xh_aka(void);
+void xh_cd(void);
 
 /* ax_ls.c */
 sep_list *add_sep_node_end(sep_list **head, char sep);

@@ -30,26 +30,26 @@ char *cpy_info(char *name, char *val)
  */
 void set_env(char *name, char *val, data_sh *datash)
 {
-	int i;
+	int b;
 	char *var_env, *name_env;
 
-	for (i = 0; datash->_environ[i]; i++)
+	for (b = 0; datash->_environ[b]; b++)
 	{
-		var_env = _strdup(datash->_environ[i]);
+		var_env = _strdup(datash->_environ[b]);
 		name_env = _strtok(var_env, "=");
 		if (_strcmp(name_env, name) == 0)
 		{
-			free(datash->_environ[i]);
-			datash->_environ[i] = cpy_info(name_env, val);
+			free(datash->_environ[b]);
+			datash->_environ[b] = cpy_info(name_env, val);
 			free(var_env);
 			return;
 		}
 		free(var_env);
 	}
 
-	datash->_environ = _reallocdp(datash->_environ, i, sizeof(char *) * (i + 2));
-	datash->_environ[i] = cpy_info(name, val);
-	datash->_environ[i + 1] = NULL;
+	datash->_environ = _reallocdp(datash->_environ, b, sizeof(char *) * (b + 2));
+	datash->_environ[b] = cpy_info(name, val);
+	datash->_environ[b + 1] = NULL;
 }
 /**
  * _setenv - compares env
@@ -60,7 +60,7 @@ int _setenv(data_sh *datash)
 {
 	if (datash->args[1] == NULL || datash->args[2] == NULL)
 	{
-		get_err(datash, -1);
+		getErr(datash, -1);
 		return (1);
 	}
 
@@ -81,7 +81,7 @@ int _unsetenv(data_sh *datash)
 
 	if (datash->args[1] == NULL)
 	{
-		get_err(datash, -1);
+		getErr(datash, -1);
 		return (1);
 	}
 	k = -1;
@@ -97,7 +97,7 @@ int _unsetenv(data_sh *datash)
 	}
 	if (k == -1)
 	{
-		get_err(datash, -1);
+		getErr(datash, -1);
 		return (1);
 	}
 	realloc_environ = malloc(sizeof(char *) * (idx));

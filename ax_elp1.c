@@ -1,9 +1,9 @@
 #include "main.h"
 /**
- * aux_help - help info
+ * x_help - help info
  * Returns nth
  */
-void aux_help(void)
+void x_help(void)
 {
 	char *help = "help: help [-dms] [pattern ...]\n";
 
@@ -14,10 +14,10 @@ void aux_help(void)
 	write(STDOUT_FILENO, help, _strlen(help));
 }
 /**
- * aux_help_aka - help info
+ * xh_aka - help info
  * Returns nth
  */
-void aux_help_aka(void)
+void xh_aka(void)
 {
 	char *help = "alias: alias [-p] [name[=value]...]\n";
 
@@ -26,10 +26,10 @@ void aux_help_aka(void)
 	write(STDOUT_FILENO, help, _strlen(help));
 }
 /**
- * aux_help_cd - help info
+ * xh_cd - help info
  * Returns nth
  */
-void aux_help_cd(void)
+void xh_cd(void)
 {
 	char *help = "cd: cd [-L|[-P [-e]] [-@]] [dir]\n";
 
