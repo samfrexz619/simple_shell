@@ -2,7 +2,7 @@
 /**
  * del_comment - deletes comments
  * @inp: input
- * Return: inp
+ * Return: inp - return inp
  */
 char *del_comment(char *inp)
 {
@@ -33,7 +33,7 @@ char *del_comment(char *inp)
 /**
  * shell_loop - shell loop
  * @datash: data
- * Return: nth
+ * Return: nth - returns nth
  */
 void shell_loop(data_sh *datash)
 {
