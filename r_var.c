@@ -4,7 +4,7 @@
  * @hd: head
  * @inp: input
  * @data: data
- * Return: nth
+ * Return: nth - returns nth
  */
 void check_env(r_var **hd, char *inp, data_sh *data)
 {
