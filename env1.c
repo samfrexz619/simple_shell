@@ -1,62 +1,62 @@
 #include "main.h"
 /**
- * cpy_info - copies info
+ * cpyInfo - copies info
  * @name: name
  * @val: value
  * Return: env (or alias)
  */
-char *cpy_info(char *name, char *val)
+char *cpyInfo(char *name, char *val)
 {
-	char *new;
-	int len_name, len_val, len;
+	char *nw;
+	int lname, lval, len;
 
-	len_name = _strlen(name);
-	len_val = _strlen(val);
-	len = len_name + len_val + 2;
-	new = malloc(sizeof(char) * (len));
-	_strcpy(new, name);
-	_strcat(new, "=");
-	_strcat(new, val);
-	_strcat(new, "\0");
+	lname = _strlen(name);
+	lval = _strlen(val);
+	len = lname + lval + 2;
+	nw = malloc(sizeof(char) * (len));
+	_strcpy(nw, name);
+	_strcat(nw, "=");
+	_strcat(nw, val);
+	_strcat(nw, "\0");
 
-	return (new);
+	return (nw);
 }
 /**
- * set_env - sets an env var
+ * setEnv - sets an env var
  * @name: name
  * @val: value
  * @datash: data
  * Return: nth
  */
-void set_env(char *name, char *val, data_sh *datash)
+void setEnv(char *name, char *val, data_sh *datash)
 {
 	int b;
-	char *var_env, *name_env;
+	char *venv, *nenv;
 
 	for (b = 0; datash->_environ[b]; b++)
 	{
-		var_env = _strdup(datash->_environ[b]);
-		name_env = _strtok(var_env, "=");
-		if (_strcmp(name_env, name) == 0)
+		venv = _strdup(datash->_environ[b]);
+		nenv = _strtok(venv, "=");
+		if (_strcmp(nenv, name) == 0)
 		{
 			free(datash->_environ[b]);
-			datash->_environ[b] = cpy_info(name_env, val);
-			free(var_env);
+			datash->_environ[b] = cpyInfo(nenv, val);
+			free(venv);
 			return;
 		}
-		free(var_env);
+		free(venv);
 	}
 
 	datash->_environ = _reallocdp(datash->_environ, b, sizeof(char *) * (b + 2));
-	datash->_environ[b] = cpy_info(name, val);
+	datash->_environ[b] = cpyInfo(name, val);
 	datash->_environ[b + 1] = NULL;
 }
 /**
- * _setenv - compares env
+ * _setEnv - compares env
  * @datash: data
  * Return: 1
  */
-int _setenv(data_sh *datash)
+int _setEnv(data_sh *datash)
 {
 	if (datash->args[1] == NULL || datash->args[2] == NULL)
 	{
@@ -64,19 +64,19 @@ int _setenv(data_sh *datash)
 		return (1);
 	}
 
-	set_env(datash->args[1], datash->args[2], datash);
+	setEnv(datash->args[1], datash->args[2], datash);
 
 	return (1);
 }
 /**
- * _unsetenv - deletes a env var
+ * _unSetEnv - deletes a env var
  * @datash: data
  * Return: 1
  */
-int _unsetenv(data_sh *datash)
+int _unSetEnv(data_sh *datash)
 {
 	char **realloc_environ;
-	char *var_env, *name_env;
+	char *venv, *nenv;
 	int idx, j, k;
 
 	if (datash->args[1] == NULL)
@@ -87,13 +87,13 @@ int _unsetenv(data_sh *datash)
 	k = -1;
 	for (idx = 0; datash->_environ[idx]; idx++)
 	{
-		var_env = _strdup(datash->_environ[idx]);
-		name_env = _strtok(var_env, "=");
-		if (_strcmp(name_env, datash->args[1]) == 0)
+		venv = _strdup(datash->_environ[idx]);
+		nenv = _strtok(venv, "=");
+		if (_strcmp(nenv, datash->args[1]) == 0)
 		{
 			k = idx;
 		}
-		free(var_env);
+		free(venv);
 	}
 	if (k == -1)
 	{

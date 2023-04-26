@@ -1,25 +1,25 @@
 #include "main.h"
 /**
- * cd_shell - change dir
+ * cd_sh - change dir
  * @datash: data
  * Return: 1 if Success
  */
-int cd_shell(data_sh *datash)
+int cd_sh(data_sh *datash)
 {
 	char *dir;
-	int izhom, izhome, izddash;
+	int izhm, izhm2, izdsh;
 
 	dir = datash->args[1];
 
 	if (dir != NULL)
 	{
-		izhom = _strcmp("$HOME", dir);
-		izhome = _strcmp("~", dir);
-		izddash = _strcmp("--", dir);
+		izhm = _strcmp("$HOME", dir);
+		izhm2 = _strcmp("~", dir);
+		izdsh = _strcmp("--", dir);
 	}
-	if (dir == NULL || izhom || izhome || !izddash)
+	if (dir == NULL || izhm || izhm2 || !izdsh)
 	{
-		cd_home(datash);
+		cd_hm(datash);
 		return (1);
 	}
 
@@ -30,10 +30,10 @@ int cd_shell(data_sh *datash)
 	}
 	if (_strcmp(".", dir) == 0 || _strcmp("..", dir) == 0)
 	{
-		cd_dot(datash);
+		_cd(datash);
 		return (1);
 	}
-	cd_to(datash);
+	cd_into(datash);
 
 	return (1);
 }

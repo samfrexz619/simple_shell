@@ -21,12 +21,12 @@ int cdir(char *path, int *idx)
 	return (0);
 }
 /**
- * *_which - locates a cmd
+ * *l_wch - locates a cmd
  * @cmd: cmd name
  * @_environ: env var
  * Return: cmd Location
  */
-char *_which(char *cmd, char **_environ)
+char *l_wch(char *cmd, char **_environ)
 {
 	char *path, *ptr_path, *token_path, *dir;
 	int len_dir, len_cmd, idx;
@@ -112,27 +112,27 @@ int is_exec(data_sh *datash)
 	return (-1);
 }
 /**
- * check_err_cmd - verifies user access
- * @dir: dir
+ * errCmd - verifies user access
+ * @dr: dir
  * @datash: data
  * Return: 1 when there's err
  */
-int check_err_cmd(char *dir, data_sh *datash)
+int errCmd(char *dr, data_sh *datash)
 {
-	if (dir == NULL)
+	if (dr == NULL)
 	{
 		getErr(datash, 127);
 		return (1);
 	}
-	if (_strcmp(datash->args[0], dir) != 0)
+	if (_strcmp(datash->args[0], dr) != 0)
 	{
-		if (access(dir, X_OK) == -1)
+		if (access(dr, X_OK) == -1)
 		{
 			getErr(datash, 126);
-			free(dir);
+			free(dr);
 			return (1);
 		}
-		free(dir);
+		free(dr);
 	}
 	else
 	{
@@ -146,39 +146,39 @@ int check_err_cmd(char *dir, data_sh *datash)
 	return (0);
 }
 /**
- * cmd_exec - executes cmd lines
+ * _exec - executes cmd lines
  * @datash: data
  * Return: 1 on Success
  */
-int cmd_exec(data_sh *datash)
+int _exec(data_sh *datash)
 {
-	pid_t pd;
+	pid_t ped;
 	pid_t wpd;
 	int state;
-	int exec;
-	char *dir;
+	int ex;
+	char *dr;
 	(void) wpd;
 
-	exec = is_exec(datash);
-	if (exec == -1)
+	ex = is_exec(datash);
+	if (ex == -1)
 		return (1);
-	if (exec == 0)
+	if (ex == 0)
 	{
-		dir = _which(datash->args[0], datash->_environ);
-		if (check_err_cmd(dir, datash) == 1)
+		dr = l_wch(datash->args[0], datash->_environ);
+		if (errCmd(dr, datash) == 1)
 			return (1);
 	}
 
-	pd = fork();
-	if (pd == 0)
+	ped = fork();
+	if (ped == 0)
 	{
-		if (exec == 0)
-			dir = _which(datash->args[0], datash->_environ);
+		if (ex == 0)
+			dr = l_wch(datash->args[0], datash->_environ);
 		else
-			dir = datash->args[0];
-		execve(dir + exec, datash->args, datash->_environ);
+			dr = datash->args[0];
+		execve(dr + ex, datash->args, datash->_environ);
 	}
-	else if (pd < 0)
+	else if (ped < 0)
 	{
 		perror(datash->av[0]);
 		return (1);
@@ -186,7 +186,7 @@ int cmd_exec(data_sh *datash)
 	else
 	{
 		do {
-			wpd = waitpid(pd, &state, WUNTRACED);
+			wpd = waitpid(ped, &state, WUNTRACED);
 		} while (!WIFEXITED(state) && !WIFSIGNALED(state));
 	}
 

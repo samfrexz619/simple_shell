@@ -16,5 +16,5 @@ int exec_line(data_sh *datash)
 	if (builtin != NULL)
 		return (builtin(datash));
 
-	return (cmd_exec(datash));
+	return (_exec(datash));
 }

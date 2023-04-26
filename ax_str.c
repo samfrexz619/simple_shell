@@ -1,43 +1,44 @@
 #include "main.h"
 /**
  * _strcat - + two str
- * @dest: pointer
+ * @dst: pointer
  * @src: source of str
  * Return: dest - return dest
  */
-char *_strcat(char *dest, const char *src)
+char *_strcat(char *dst, const char *src)
 {
 	int idx, j;
 
-	for (idx = 0; dest[idx] != '\0'; idx++)
-		;
+	idx = 0;
+	while (dst[idx] != '\0')
+		idx++;
 
 	for (j = 0; src[j] != '\0'; j++)
 	{
-		dest[idx] = src[j];
+		dst[idx] = src[j];
 		idx++;
 	}
 
-	dest[idx] = '\0';
-	return (dest);
+	dst[idx] = '\0';
+	return (dst);
 }
 /**
  * *_strcpy - copies the str
- * @dest: pointer
+ * @dst: pointer
  * @src: source str
  * Return: dest - return dest
  */
-char *_strcpy(char *dest, char *src)
+char *_strcpy(char *dst, char *src)
 {
 	size_t idx;
 
 	for (idx = 0; src[idx] != '\0'; idx++)
 	{
-		dest[idx] = src[idx];
+		dst[idx] = src[idx];
 	}
-	dest[idx] = '\0';
+	dst[idx] = '\0';
 
-	return (dest);
+	return (dst);
 }
 /**
  * _strcmp - compares two str
@@ -61,17 +62,17 @@ int _strcmp(char *str, char *str2)
 /**
  * _strchr - locates a char
  * @str: string
- * @c: character
+ * @ch: character
  * Return: pointer - return pointer
  */
-char *_strchr(char *str, char c)
+char *_strchr(char *str, char ch)
 {
 	unsigned int idx = 0;
 
 	for (; *(str + idx) != '\0'; idx++)
-		if (*(str + idx) == c)
+		if (*(str + idx) == ch)
 			return (str + idx);
-	if (*(str + idx) == c)
+	if (*(str + idx) == ch)
 		return (str + idx);
 	return ('\0');
 }

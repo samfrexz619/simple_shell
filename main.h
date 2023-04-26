@@ -95,13 +95,13 @@ int (*get_builtin(char *cmd))(data_sh *datash);
 int getErr(data_sh *datash, int eval);
 
 /* cd_dot.c */
-void cd_dot(data_sh *datash);
-void cd_to(data_sh *datash);
+void _cd(data_sh *datash);
+void cd_into(data_sh *datash);
 void cd_prev(data_sh *datash);
-void cd_home(data_sh *datash);
+void cd_hm(data_sh *datash);
 
 /* cd_sh.c */
-int cd_shell(data_sh *datash);
+int cd_sh(data_sh *datash);
 
 /* syntax_error.c */
 int count_char(char *inp, int idx);
@@ -112,10 +112,10 @@ int check_syntax_err(data_sh *datash, char *inp);
 
 /* cmdexec.c */
 int cdir(char *path, int *idx);
-char *_which(char *cmd, char **_environ);
+char *l_wch(char *cmd, char **_environ);
 int is_exec(data_sh *datash);
-int check_err_cmd(char *dir, data_sh *datash);
-int cmd_exec(data_sh *datash);
+int errCmd(char *dr, data_sh *datash);
+int _exec(data_sh *datash);
 
 /* split.c */
 char *swap_char(char *inp, int bool);
@@ -181,10 +181,10 @@ char *x_itoa(int num);
 int _atoi(char *str);
 
 /* ax_str*/
-char *_strcat(char *dest, const char *src);
-char *_strcpy(char *dest, char *src);
+char *_strcat(char *dst, const char *src);
+char *_strcpy(char *dst, char *src);
 int _strcmp(char *str, char *str2);
-char *_strchr(char *str, char c);
+char *_strchr(char *str, char ch);
 int _strspn(char *str, char *acc);
 
 /* ax_str1.c */
@@ -202,10 +202,10 @@ char *_getenv(const char *name, char **_environ);
 int _env(data_sh *datash);
 
 /* env1.c */
-char *cpy_info(char *name, char *val);
-void set_env(char *name, char *val, data_sh *datash);
-int _setenv(data_sh *datash);
-int _unsetenv(data_sh *datash);
+char *cpyInfo(char *name, char *val);
+void setEnv(char *name, char *val, data_sh *datash);
+int _setEnv(data_sh *datash);
+int _unSetEnv(data_sh *datash);
 
 /* exe_line */
 int exec_line(data_sh *datash);
