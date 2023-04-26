@@ -2,7 +2,7 @@
 /**
  * exec_line - finds builtins
  * @datash: data
- * Return: 1
+ * Return: 1 - returns 1
  */
 int exec_line(data_sh *datash)
 {
