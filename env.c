@@ -3,7 +3,7 @@
  * cmp_env_name -compares env var
  * @nenv: name of env
  * @name: name
- * Return: 0 or another value
+ * Return: 0 (or another value)
  */
 int cmp_env_name(const char *nenv, const char *name)
 {
