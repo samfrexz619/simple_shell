@@ -3,7 +3,7 @@
  * get_err - calls the error
  * @datash: data that contains args
  * @eval: err val
- * Return: error
+ * Return: Error
  */
 int get_err(data_sh *datash, int eval)
 {
