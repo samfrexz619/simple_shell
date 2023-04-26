@@ -2,7 +2,7 @@
 /**
  * cd_shell - change dir
  * @datash: data
- * Return: 1 if success
+ * Return: 1 if Success
  */
 int cd_shell(data_sh *datash)
 {
