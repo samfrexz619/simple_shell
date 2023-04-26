@@ -3,7 +3,7 @@
  * swap_char - swap | and &
  * @inp: input
  * @bool: type swap
- * Return: swapped str
+ * Return: swapped str - returns swapped str
  */
 char *swap_char(char *inp, int bool)
 {
@@ -44,7 +44,7 @@ char *swap_char(char *inp, int bool)
  * @head_s: head
  * @head_l: head of cmd lines list
  * @inp: input
- * Return: nth
+ * Return: nth - returns nth
  */
 void add_nodes(sep_list **head_s, line_list **head_l, char *inp)
 {
@@ -78,7 +78,7 @@ void add_nodes(sep_list **head_s, line_list **head_l, char *inp)
  * @list_s: sep list
  * @list_l: cmd line
  * @datash: data
- * Return: nth
+ * Return: nth returns - nth
  */
 void move_next(sep_list **list_s, line_list **list_l, data_sh *datash)
 {
