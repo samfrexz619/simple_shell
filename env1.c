@@ -3,7 +3,7 @@
  * cpy_info - copies info
  * @name: name
  * @val: value
- * Return: env or alias
+ * Return: env (or alias)
  */
 char *cpy_info(char *name, char *val)
 {
