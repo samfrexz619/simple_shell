@@ -2,7 +2,7 @@
 /**
  * err_env - err msg
  * @datash: data
- * Returns err msg
+ * Return: err msg
  */
 char *err_env(data_sh *datash)
 {
@@ -37,7 +37,7 @@ char *err_env(data_sh *datash)
 /**
  * err_path_126 - err msg for path
  * @datash: data
- * Returns err msg
+ * Return: err msg
  */
 char *err_path_126(data_sh *datash)
 {
