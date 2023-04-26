@@ -1,11 +1,11 @@
 #include "main.h"
 /**
- * cmp_env_name -compares env var
+ * cmp_env_n -compares env var
  * @nenv: name of env
  * @name: name
  * Return: 0 (or another value)
  */
-int cmp_env_name(const char *nenv, const char *name)
+int cmp_env_n(const char *nenv, const char *name)
 {
 	int idx;
 
@@ -20,12 +20,12 @@ int cmp_env_name(const char *nenv, const char *name)
 	return (idx + 1);
 }
 /**
- * _getenv - get an env
+ * _getEnv - get an env
  * @name: name of env
  * @_environ: env
  * Return: value of env
  */
-char *_getenv(const char *name, char **_environ)
+char *_getEnv(const char *name, char **_environ)
 {
 	char *ptr_env;
 	int idx, mov;
@@ -35,7 +35,7 @@ char *_getenv(const char *name, char **_environ)
 
 	for (idx = 0; _environ[idx]; idx++)
 	{
-		mov = cmp_env_name(_environ[idx], name);
+		mov = cmp_env_n(_environ[idx], name);
 		if (mov)
 		{
 			ptr_env = _environ[idx];
@@ -45,11 +45,11 @@ char *_getenv(const char *name, char **_environ)
 	return (ptr_env + mov);
 }
 /**
- * _env - prints the env
+ * prnt_env - prints the env
  * @datash: data
  * Return: 1
  */
-int _env(data_sh *datash)
+int prnt_env(data_sh *datash)
 {
 	int idx, j;
 

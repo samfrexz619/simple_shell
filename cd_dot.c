@@ -90,7 +90,7 @@ void cd_prev(data_sh *datash)
 	getcwd(pwd, sizeof(pwd));
 	cp_pwd = _strdup(pwd);
 
-	p_oldpwd = _getenv("OLDPWD", datash->_environ);
+	p_oldpwd = _getEnv("OLDPWD", datash->_environ);
 
 	if (p_oldpwd == NULL)
 		cp_oldpwd = cp_pwd;
@@ -104,7 +104,7 @@ void cd_prev(data_sh *datash)
 	else
 		setEnv("PWD", cp_oldpwd, datash);
 
-	p_pwd = _getenv("PWD", datash->_environ);
+	p_pwd = _getEnv("PWD", datash->_environ);
 
 	write(STDOUT_FILENO, p_pwd, _strlen(p_pwd));
 	write(STDOUT_FILENO, "\n", 1);
@@ -130,7 +130,7 @@ void cd_hm(data_sh *datash)
 	getcwd(pwd, sizeof(pwd));
 	p_pwd = _strdup(pwd);
 
-	hm = _getenv("HOME", datash->_environ);
+	hm = _getEnv("HOME", datash->_environ);
 
 	if (hm == NULL)
 	{

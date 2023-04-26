@@ -32,7 +32,7 @@ char *l_wch(char *cmd, char **_environ)
 	int len_dir, len_cmd, idx;
 	struct stat st;
 
-	path = _getenv("PATH", _environ);
+	path = _getEnv("PATH", _environ);
 	if (path)
 	{
 		ptr_path = _strdup(path);

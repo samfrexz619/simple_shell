@@ -7,7 +7,7 @@
 int (*get_builtin(char *cmd))(data_sh *)
 {
 	built_in builtins[] = {
-		{ "env", _env },
+		{ "env", prnt_env },
 		{ "exit", exit_shell },
 		{ "setenv", _setEnv },
 		{ "unsetenv", _unSetEnv },
@@ -22,5 +22,5 @@ int (*get_builtin(char *cmd))(data_sh *)
 		if (_strcmp(builtins[idx].name, cmd) == 0)
 			break;
 	}
-	return (builtins[idx].h);
+	return (builtins[idx].f);
 }

@@ -80,12 +80,12 @@ typedef struct rvar_list
 /**
  * struct builtin_s - Builtin struct
  * @name: The name of the cmd builtin i.e cd, exit, env
- * @h: data type pointer function.
+ * @f: data type pointer function.
  */
 typedef struct builtin_s
 {
 	char *name;
-	int (*h)(data_sh *datash);
+	int (*f)(data_sh *datash);
 } built_in;
 
 /* 1-get_builtin */
@@ -198,8 +198,8 @@ int _isdigit(const char *str);
 void revStr(char *str);
 
 /* env.c */
-char *_getenv(const char *name, char **_environ);
-int _env(data_sh *datash);
+char *_getEnv(const char *name, char **_environ);
+int prnt_env(data_sh *datash);
 
 /* env1.c */
 char *cpyInfo(char *name, char *val);
