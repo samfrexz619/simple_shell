@@ -3,7 +3,7 @@
  * cdir - checks the current dir
  * @path: type char
  * @idx: index
- * Return: 1 if successful
+ * Return: 1 if Successful
  */
 int cdir(char *path, int *idx)
 {
@@ -24,7 +24,7 @@ int cdir(char *path, int *idx)
  * *_which - locates a cmd
  * @cmd: cmd name
  * @_environ: env var
- * Return: cmd location
+ * Return: cmd Location
  */
 char *_which(char *cmd, char **_environ)
 {
@@ -148,7 +148,7 @@ int check_err_cmd(char *dir, data_sh *datash)
 /**
  * cmd_exec - executes cmd lines
  * @datash: data
- * Return: 1 on success
+ * Return: 1 on Success
  */
 int cmd_exec(data_sh *datash)
 {
