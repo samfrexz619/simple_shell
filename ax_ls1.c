@@ -5,7 +5,7 @@
  * @lvar: var length
  * @val: value
  * @lval: length value
- * Return: address
+ * Return: address - returns address
  */
 r_var *add_rvar_node(r_var **head, int lvar, char *val, int lval)
 {
@@ -38,7 +38,7 @@ r_var *add_rvar_node(r_var **head, int lvar, char *val, int lval)
 /**
  * free_rvar_list - frees list
  * @head: head
- * Return: nth
+ * Return: nth - returns nth
  */
 void free_rvar_list(r_var **head)
 {
