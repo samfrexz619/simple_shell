@@ -22,5 +22,5 @@ int (*get_builtin(char *cmd))(data_sh *)
 		if (_strcmp(builtins[idx].name, cmd) == 0)
 			break;
 	}
-	return (builtins[idx].f);
+	return (builtins[idx].h);
 }

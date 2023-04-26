@@ -46,7 +46,7 @@ char *swap_char(char *inp, int bool)
  * @inp: input
  * Return: nth - returns nth
  */
-void add_nodes(sep_list **head_s, line_list **head_l, char *inp)
+void add_nodes(sep_list **head_s, line_ls **head_l, char *inp)
 {
 	int idx;
 	char *line;
@@ -80,11 +80,11 @@ void add_nodes(sep_list **head_s, line_list **head_l, char *inp)
  * @datash: data
  * Return: nth returns - nth
  */
-void move_next(sep_list **list_s, line_list **list_l, data_sh *datash)
+void move_next(sep_list **list_s, line_ls **list_l, data_sh *datash)
 {
 	int loop_sep;
 	sep_list *ls_s;
-	line_list *ls_l;
+	line_ls *ls_l;
 
 	loop_sep = 1;
 	ls_s = *list_s;
@@ -122,7 +122,7 @@ void move_next(sep_list **list_s, line_list **list_l, data_sh *datash)
 int split_cmd(data_sh *datash, char *inp)
 {
 	sep_list *head_s, *list_s;
-	line_list *head_l, *list_l;
+	line_ls *head_l, *list_l;
 	int loop;
 
 	head_s = NULL;

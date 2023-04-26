@@ -2,22 +2,22 @@
 /**
  * add_rvar_node - adds a var
  * @head: head
- * @lvar: var length
+ * @lenVar: var length
  * @val: value
- * @lval: length value
+ * @lenVal: length value
  * Return: address - returns address
  */
-r_var *add_rvar_node(r_var **head, int lvar, char *val, int lval)
+st_var *add_rvar_node(st_var **head, int lenVar, char *val, int lenVal)
 {
-	r_var *new, *temp;
+	st_var *new, *temp;
 
-	new = malloc(sizeof(r_var));
+	new = malloc(sizeof(st_var));
 	if (new == NULL)
 		return (NULL);
 
-	new->len_var = lvar;
+	new->len_var = lenVar;
 	new->val = val;
-	new->len_val = lval;
+	new->len_val = lenVal;
 
 	new->next = NULL;
 	temp = *head;
@@ -40,10 +40,10 @@ r_var *add_rvar_node(r_var **head, int lvar, char *val, int lval)
  * @head: head
  * Return: nth - returns nth
  */
-void free_rvar_list(r_var **head)
+void free_rvar_list(st_var **head)
 {
-	r_var *temp;
-	r_var *curr;
+	st_var *temp;
+	st_var *curr;
 
 	if (head != NULL)
 	{

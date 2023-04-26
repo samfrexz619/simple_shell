@@ -16,7 +16,7 @@
 #define TOK_BSIZE 128
 #define TOK_DLIM " \t\r\n\a"
 
-/*Points to an array*/
+/*Points to an arr*/
 extern char **environ;
 
 /**
@@ -60,7 +60,7 @@ typedef struct line_lists
 {
 	char *line;
 	struct line_lists *next;
-} line_list;
+} line_ls;
 /**
  * struct rvar_list -  linked list
  * @len_var: length of the var
@@ -75,17 +75,17 @@ typedef struct rvar_list
 	char *val;
 	int len_val;
 	struct rvar_list *next;
-} r_var;
+} st_var;
 
 /**
  * struct builtin_s - Builtin struct
  * @name: The name of the cmd builtin i.e cd, exit, env
- * @f: data type pointer function.
+ * @h: data type pointer function.
  */
 typedef struct builtin_s
 {
 	char *name;
-	int (*f)(data_sh *datash);
+	int (*h)(data_sh *datash);
 } built_in;
 
 /* 1-get_builtin */
@@ -119,8 +119,8 @@ int cmd_exec(data_sh *datash);
 
 /* split.c */
 char *swap_char(char *inp, int bool);
-void add_nodes(sep_list **head_s, line_list **head_l, char *inp);
-void move_next(sep_list **list_s, line_list **list_l, data_sh *datash);
+void add_nodes(sep_list **head_s, line_ls **head_l, char *inp);
+void move_next(sep_list **list_s, line_ls **list_l, data_sh *datash);
 int split_cmd(data_sh *datash, char *inp);
 char **split_line(char *inp);
 
@@ -163,12 +163,12 @@ void xh_cd(void);
 /* ax_ls.c */
 sep_list *add_sep_node_end(sep_list **head, char sep);
 void free_sep_list(sep_list **head);
-line_list *add_line_node_end(line_list **head, char *line);
-void free_line_list(line_list **head);
+line_ls *add_line_node_end(line_ls **head, char *line);
+void free_line_list(line_ls **head);
 
 /* ax_ls1.c */
-r_var *add_rvar_node(r_var **head, int lvar, char *var, int lval);
-void free_rvar_list(r_var **head);
+st_var *add_rvar_node(st_var **head, int lenVar, char *var, int lenVal);
+void free_rvar_list(st_var **head);
 
 /* ax_m.c */
 void _memcpy(void *newptr, const void *ptr, unsigned int size);
@@ -217,9 +217,9 @@ int exit_shell(data_sh *datash);
 void get_sigint(int sig);
 
 /* rep_var.c */
-void check_env(r_var **hd, char *inp, data_sh *data);
-int check_vars(r_var **hd, char *inp, char *st, data_sh *data);
-char *replaced_input(r_var **head, char *inp, char *new_inp, int nlen);
+void check_env(st_var **hd, char *inp, data_sh *data);
+int check_vars(st_var **hd, char *inp, char *st, data_sh *data);
+char *replaced_input(st_var **head, char *inp, char *new_inp, int nlen);
 char *rep_var(char *inp, data_sh *datash);
 
 /* g_help.c */

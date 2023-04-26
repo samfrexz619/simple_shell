@@ -6,7 +6,7 @@
  * @data: data
  * Return: nth - returns nth
  */
-void check_env(r_var **hd, char *inp, data_sh *data)
+void check_env(st_var **hd, char *inp, data_sh *data)
 {
 	int row, chr, j, lval;
 	char **_envr;
@@ -46,7 +46,7 @@ void check_env(r_var **hd, char *inp, data_sh *data)
  * @data: data
  * Return: nth
  */
-int check_vars(r_var **hd, char *inp, char *st, data_sh *data)
+int check_vars(st_var **hd, char *inp, char *st, data_sh *data)
 {
 	int idx, lst, lpd;
 
@@ -86,9 +86,9 @@ int check_vars(r_var **hd, char *inp, char *st, data_sh *data)
  * @nlen: length
  * Return: replaced str
  */
-char *replaced_input(r_var **head, char *inp, char *new_inp, int nlen)
+char *replaced_input(st_var **head, char *inp, char *new_inp, int nlen)
 {
-	r_var *idx;
+	st_var *idx;
 	int i, j, k;
 
 	idx = *head;
@@ -136,7 +136,7 @@ char *replaced_input(r_var **head, char *inp, char *new_inp, int nlen)
  */
 char *rep_var(char *inp, data_sh *datash)
 {
-	r_var *head, *idx;
+	st_var *head, *idx;
 	char *status, *new_input;
 	int olen, nlen;
 

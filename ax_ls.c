@@ -57,11 +57,11 @@ void free_sep_list(sep_list **head)
  * @line: cmd line
  * Return: address - returns address
  */
-line_list *add_line_node_end(line_list **head, char *line)
+line_ls *add_line_node_end(line_ls **head, char *line)
 {
-	line_list *new, *temp;
+	line_ls *new, *temp;
 
-	new = malloc(sizeof(line_list));
+	new = malloc(sizeof(line_ls));
 	if (new == NULL)
 		return (NULL);
 
@@ -87,10 +87,10 @@ line_list *add_line_node_end(line_list **head, char *line)
  * @head: head
  * Return: nth - returns nth
  */
-void free_line_list(line_list **head)
+void free_line_list(line_ls **head)
 {
-	line_list *temp;
-	line_list *curr;
+	line_ls *temp;
+	line_ls *curr;
 
 	if (head != NULL)
 	{
