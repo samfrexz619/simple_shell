@@ -5,7 +5,7 @@
  * @msg: message
  * @err: output
  * @ver_str: counter
- * Return: err msg
+ * Returns err msg
  */
 char *strcat_cd(data_sh *datash, char *msg, char *err, char *ver_str)
 {
@@ -38,7 +38,7 @@ char *strcat_cd(data_sh *datash, char *msg, char *err, char *ver_str)
 /**
  * err_get_cd - err msg
  * @datash: data
- * Return: err msg
+ * Returns err msg
  */
 char *err_get_cd(data_sh *datash)
 {
@@ -76,7 +76,7 @@ char *err_get_cd(data_sh *datash)
 /**
  * err_not_found - err msg
  * @datash: data
- * Return: err msg
+ * Returns err msg
  */
 char *err_not_found(data_sh *datash)
 {
@@ -108,7 +108,7 @@ char *err_not_found(data_sh *datash)
 /**
  * err_exit_sh - err msg
  * @datash: data
- * Return: err msg
+ * Returns err msg
  */
 char *err_exit_shell(data_sh *datash)
 {
