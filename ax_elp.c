@@ -1,7 +1,7 @@
-#include "main.h"
+n#include "main.h"
 /**
  * aux_help_env - help info
- * Return: nth
+ * Returns nth
  */
 void aux_help_env(void)
 {
