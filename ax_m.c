@@ -4,7 +4,7 @@
  * @newptr: destination
  * @ptr: source
  * @size: size
- * Return: nth
+ * Return: nth - returns nth
  */
 void _memcpy(void *newptr, const void *ptr, unsigned int size)
 {
@@ -20,7 +20,7 @@ void _memcpy(void *newptr, const void *ptr, unsigned int size)
  * @ptr: pointer to the memory
  * @old_size: size
  * @new_size: new size
- * Return: ptr
+ * Return: ptr - returns ptr
  */
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
@@ -55,7 +55,7 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
  * @ptr: double pointer
  * @old_size: size
  * @new_size: new size
- * Return: ptr
+ * Return: ptr - returns ptr
  */
 char **_reallocdp(char **ptr, unsigned int old_size, unsigned int new_size)
 {
