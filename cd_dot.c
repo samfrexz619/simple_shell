@@ -2,7 +2,7 @@
 /**
  * cd_dot - change dir
  * @datash: data
- * Return: nothing
+ * Return: Nothing
  */
 void cd_dot(data_sh *datash)
 {
