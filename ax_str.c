@@ -3,7 +3,7 @@
  * _strcat - + two str
  * @dest: pointer
  * @src: source of str
- * Return: dest
+ * Return: dest - return dest
  */
 char *_strcat(char *dest, const char *src)
 {
@@ -25,7 +25,7 @@ char *_strcat(char *dest, const char *src)
  * *_strcpy - copies the str
  * @dest: pointer
  * @src: source str
- * Return: dest
+ * Return: dest - return dest
  */
 char *_strcpy(char *dest, char *src)
 {
@@ -62,7 +62,7 @@ int _strcmp(char *str, char *str2)
  * _strchr - locates a char
  * @str: string
  * @c: character
- * Return: pointer
+ * Return: pointer - return pointer
  */
 char *_strchr(char *str, char c)
 {
@@ -79,7 +79,7 @@ char *_strchr(char *str, char c)
  * _strspn - gets the length
  * @str: initial segment
  * @acc: accepted bytes
- * Return: num of accepted bytes
+ * Return: num of accepted bytes - return bytes
  */
 int _strspn(char *str, char *acc)
 {
