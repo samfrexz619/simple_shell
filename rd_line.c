@@ -2,7 +2,7 @@
 /**
  * read_line - reads the input
  * @idx_eof: val of getline
- * Return: input str
+ * Return: input str - (input string)
  */
 char *read_line(int *idx_eof)
 {
