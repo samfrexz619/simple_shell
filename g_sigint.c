@@ -1,7 +1,7 @@
 #include "main.h"
 /**
  * get_sigint - handles ctrl c
- * @sig: signal
+ * @sig: Signal
  */
 void get_sigint(int sig)
 {
