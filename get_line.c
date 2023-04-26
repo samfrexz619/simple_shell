@@ -36,7 +36,7 @@ void assign_line(char **lineptr, size_t *nl, char *buffer, size_t jb)
  * @lineptr: stores input str
  * @nl: size of lineptr
  * @stream: stream
- * Return: num of bytes
+ * Return: num of bytes - return bytes
  */
 ssize_t get_line(char **lineptr, size_t *nl, FILE *stream)
 {
