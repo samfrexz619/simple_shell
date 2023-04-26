@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * exit_shell - exits
+ * exit_shell - exits the shell
  * @datash: data
  * Return: 0
  */
