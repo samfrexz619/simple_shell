@@ -1,15 +1,15 @@
 #include "main.h"
 /**
- * add_sep_node_end - adds a separator
+ * addSpNodeEnd - adds a separator
  * @head: head
  * @sep: (; | &)
  * Return: address - returns address
  */
-sep_list *add_sep_node_end(sep_list **head, char sep)
+sep_ls *addSpNodeEnd(sep_ls **head, char sep)
 {
-	sep_list *new, *temp;
+	sep_ls *new, *temp;
 
-	new = malloc(sizeof(sep_list));
+	new = malloc(sizeof(sep_ls));
 	if (new == NULL)
 		return (NULL);
 
@@ -31,14 +31,14 @@ sep_list *add_sep_node_end(sep_list **head, char sep)
 	return (*head);
 }
 /**
- * free_sep_list - frees a sep_list
+ * freeSpLs - frees a sep_list
  * @head: head
  * Return: nth - returns nth
  */
-void free_sep_list(sep_list **head)
+void freeSpLs(sep_ls **head)
 {
-	sep_list *temp;
-	sep_list *curr;
+	sep_ls *temp;
+	sep_ls *curr;
 
 	if (head != NULL)
 	{
@@ -52,12 +52,12 @@ void free_sep_list(sep_list **head)
 	}
 }
 /**
- * add_line_node_end - adds a cmd line
+ * addLnNodeEnd - adds a cmd line
  * @head: head
  * @line: cmd line
  * Return: address - returns address
  */
-line_ls *add_line_node_end(line_ls **head, char *line)
+line_ls *addLnNodeEnd(line_ls **head, char *line)
 {
 	line_ls *new, *temp;
 
@@ -83,11 +83,11 @@ line_ls *add_line_node_end(line_ls **head, char *line)
 	return (*head);
 }
 /**
- * free_line_list - frees a line list
+ * freeLnls - frees a line list
  * @head: head
  * Return: nth - returns nth
  */
-void free_line_list(line_ls **head)
+void freeLnls(line_ls **head)
 {
 	line_ls *temp;
 	line_ls *curr;

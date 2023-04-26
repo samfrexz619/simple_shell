@@ -11,7 +11,7 @@ char *errEnv(data_sh *datash)
 	char *_str;
 	char *msg;
 
-	_str = aux_itoa(datash->counter);
+	_str = x_itoa(datash->counter);
 	msg = ": Unable to add/remove from environment\n";
 	len = _strlen(datash->av[0]) + _strlen(_str);
 	len += _strlen(datash->args[0]) + _strlen(msg) + 4;
@@ -45,7 +45,7 @@ char *errPath126(data_sh *datash)
 	char *_str;
 	char *err;
 
-	_str = aux_itoa(datash->counter);
+	_str = x_itoa(datash->counter);
 	len = _strlen(datash->av[0]) + _strlen(_str);
 	len += _strlen(datash->args[0]) + 24;
 	err = malloc(sizeof(char) * (len + 1));

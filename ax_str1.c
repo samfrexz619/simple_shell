@@ -6,15 +6,15 @@
  */
 char *_strdup(const char *str)
 {
-	char *new;
+	char *nw;
 	size_t len;
 
 	len = _strlen(str);
-	new = malloc(sizeof(char) * (len + 1));
-	if (new == NULL)
+	nw = malloc(sizeof(char) * (len + 1));
+	if (nw == NULL)
 		return (NULL);
-	_memcpy(new, str, len + 1);
-	return (new);
+	_memcpy(nw, str, len + 1);
+	return (nw);
 }
 /**
  * _strlen - length of a str
@@ -25,8 +25,10 @@ int _strlen(const char *str)
 {
 	int len;
 
-	for (len = 0; str[len] != 0; len++)
+	len = 0;
+	while (str[len] != 0)
 	{
+		len++;
 	}
 	return (len);
 }
@@ -63,45 +65,45 @@ int cmp_chars(char str[], const char *dlim)
  */
 char *_strtok(char str[], const char *dlim)
 {
-	static char *splitted, *str_end;
-	char *str_start;
+	static char *splittd, *str_end;
+	char *str_srt;
 	unsigned int idx, bool;
 
 	if (str != NULL)
 	{
 		if (cmp_chars(str, dlim))
 			return (NULL);
-		splitted = str; /*Stores first add*/
+		splittd = str;
 		idx = _strlen(str);
 		str_end = &str[idx]; /*Stores last add*/
 	}
-	str_start = splitted;
-	if (str_start == str_end) /*Reaching the end*/
+	str_srt = splittd;
+	if (str_srt == str_end) /*Reaching the end*/
 		return (NULL);
 
-	for (bool = 0; *splitted; splitted++)
+	for (bool = 0; *splittd; splittd++)
 	{
 		/*Breaking loop finding the next token*/
-		if (splitted != str_start)
-			if (*splitted && *(splitted - 1) == '\0')
+		if (splittd != str_srt)
+			if (*splittd && *(splittd - 1) == '\0')
 				break;
 		/*Replacing delimiter for null char*/
 		for (idx = 0; dlim[idx]; idx++)
 		{
-			if (*splitted == dlim[idx])
+			if (*splittd == dlim[idx])
 			{
-				*splitted = '\0';
-				if (splitted == str_start)
-					str_start++;
+				*splittd = '\0';
+				if (splittd == str_srt)
+					str_srt++;
 				break;
 			}
 		}
-		if (bool == 0 && *splitted) /*Str != Dlim*/
+		if (bool == 0 && *splittd) /*Str != Dlim*/
 			bool = 1;
 	}
 	if (bool == 0) /*Str == Delim*/
 		return (NULL);
-	return (str_start);
+	return (str_srt);
 }
 /**
  * _isdigit - det str

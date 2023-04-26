@@ -8,7 +8,7 @@
  */
 void check_env(st_var **hd, char *inp, data_sh *data)
 {
-	int row, chr, j, lval;
+	int row, chr, j, lenVal;
 	char **_envr;
 
 	_envr = data->_environ;
@@ -18,8 +18,8 @@ void check_env(st_var **hd, char *inp, data_sh *data)
 		{
 			if (_envr[row][chr] == '=')
 			{
-				lval = _strlen(_envr[row] + chr + 1);
-				add_rvar_node(hd, j, _envr[row] + chr + 1, lval);
+				lenVal = _strlen(_envr[row] + chr + 1);
+				addRvarNd(hd, j, _envr[row] + chr + 1, lenVal);
 				return;
 			}
 
@@ -36,21 +36,21 @@ void check_env(st_var **hd, char *inp, data_sh *data)
 			break;
 	}
 
-	add_rvar_node(hd, j, NULL, 0);
+	addRvarNd(hd, j, NULL, 0);
 }
 /**
  * check_vars - check typed var
  * @hd: head
  * @inp: input str
- * @st: status
+ * @stat: status
  * @data: data
  * Return: nth
  */
-int check_vars(st_var **hd, char *inp, char *st, data_sh *data)
+int check_vars(st_var **hd, char *inp, char *stat, data_sh *data)
 {
-	int idx, lst, lpd;
+	int idx, lenst, lpd;
 
-	lst = _strlen(st);
+	lenst = _strlen(stat);
 	lpd = _strlen(data->pid);
 
 	for (idx = 0; inp[idx]; idx++)
@@ -58,19 +58,19 @@ int check_vars(st_var **hd, char *inp, char *st, data_sh *data)
 		if (inp[idx] == '$')
 		{
 			if (inp[idx + 1] == '?')
-				add_rvar_node(hd, 2, st, lst), idx++;
+				addRvarNd(hd, 2, stat, lenst), idx++;
 			else if (inp[idx + 1] == '$')
-				add_rvar_node(hd, 2, data->pid, lpd), idx++;
+				addRvarNd(hd, 2, data->pid, lpd), idx++;
 			else if (inp[idx + 1] == '\n')
-				add_rvar_node(hd, 0, NULL, 0);
+				addRvarNd(hd, 0, NULL, 0);
 			else if (inp[idx + 1] == '\0')
-				add_rvar_node(hd, 0, NULL, 0);
+				addRvarNd(hd, 0, NULL, 0);
 			else if (inp[idx + 1] == ' ')
-				add_rvar_node(hd, 0, NULL, 0);
+				addRvarNd(hd, 0, NULL, 0);
 			else if (inp[idx + 1] == '\t')
-				add_rvar_node(hd, 0, NULL, 0);
+				addRvarNd(hd, 0, NULL, 0);
 			else if (inp[idx + 1] == ';')
-				add_rvar_node(hd, 0, NULL, 0);
+				addRvarNd(hd, 0, NULL, 0);
 			else
 				check_env(hd, inp + idx, data);
 		}
@@ -137,10 +137,10 @@ char *replaced_input(st_var **head, char *inp, char *new_inp, int nlen)
 char *rep_var(char *inp, data_sh *datash)
 {
 	st_var *head, *idx;
-	char *status, *new_input;
+	char *status, *new_inp;
 	int olen, nlen;
 
-	status = aux_itoa(datash->status);
+	status = x_itoa(datash->status);
 	head = NULL;
 
 	olen = check_vars(&head, inp, status, datash);
@@ -162,14 +162,14 @@ char *rep_var(char *inp, data_sh *datash)
 
 	nlen += olen;
 
-	new_input = malloc(sizeof(char) * (nlen + 1));
-	new_input[nlen] = '\0';
+	new_inp = malloc(sizeof(char) * (nlen + 1));
+	new_inp[nlen] = '\0';
 
-	new_input = replaced_input(&head, inp, new_input, nlen);
+	new_inp = replaced_input(&head, inp, new_inp, nlen);
 
 	free(inp);
 	free(status);
-	free_rvar_list(&head);
+	freeRvarLs(&head);
 
-	return (new_input);
+	return (new_inp);
 }

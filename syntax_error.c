@@ -111,7 +111,7 @@ void print_syntax_err(data_sh *datash, char *inp, int idx, int bool)
 
 	msg2 = ": Syntax error: \"";
 	msg3 = "\" unexpected\n";
-	counter = aux_itoa(datash->counter);
+	counter = x_itoa(datash->counter);
 	len = _strlen(datash->av[0]) + _strlen(counter);
 	len += _strlen(msg) + _strlen(msg2) + _strlen(msg3) + 2;
 
@@ -142,11 +142,11 @@ void print_syntax_err(data_sh *datash, char *inp, int idx, int bool)
 int check_syntax_err(data_sh *datash, char *inp)
 {
 	int beg = 0;
-	int f_char = 0;
+	int f_ch = 0;
 	int idx = 0;
 
-	f_char = first_char(inp, &beg);
-	if (f_char == -1)
+	f_ch = first_char(inp, &beg);
+	if (f_ch == -1)
 	{
 		print_syntax_err(datash, inp, beg, 0);
 		return (1);

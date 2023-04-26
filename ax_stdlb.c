@@ -1,40 +1,40 @@
 #include "main.h"
 /**
- * get_len - get length
+ * getLength - get length
  * @num: number
  * Return: length - returns length
  */
-int get_len(int num)
+int getLength(int num)
 {
-	unsigned int n1;
+	unsigned int num1;
 	int len = 1;
 
 	if (num < 0)
 	{
 		len++;
-		n1 = num * -1;
+		num1 = num * -1;
 	}
 	else
 	{
-		n1 = num;
+		num1 = num;
 	}
-	while (n1 > 9)
+	while (num1 > 9)
 	{
 		len++;
-		n1 = n1 / 10;
+		num1 = num1 / 10;
 	}
 
 	return (len);
 }
 /**
- * aux_itoa - converts int
+ * x_itoa - converts int
  * @num: num
  * Return: str - returns string
  */
-char *aux_itoa(int num)
+char *x_itoa(int num)
 {
-	unsigned int n1;
-	int len = get_len(num);
+	unsigned int num1;
+	int len = getLength(num);
 	char *buffer;
 
 	buffer = malloc(sizeof(char) * (len + 1));
@@ -45,21 +45,21 @@ char *aux_itoa(int num)
 
 	if (num < 0)
 	{
-		n1 = num * -1;
+		num1 = num * -1;
 		buffer[0] = '-';
 	}
 	else
 	{
-		n1 = num;
+		num1 = num;
 	}
 
 	len--;
 	do {
-		*(buffer + len) = (n1 % 10) + '0';
-		n1 = n1 / 10;
+		*(buffer + len) = (num1 % 10) + '0';
+		num1 = num1 / 10;
 		len--;
 	}
-	while (n1 > 0)
+	while (num1 > 0)
 		;
 	return (buffer);
 }
@@ -70,25 +70,25 @@ char *aux_itoa(int num)
  */
 int _atoi(char *str)
 {
-	unsigned int count, size = 0, oi = 0, pn = 1, m = 1, idx;
+	unsigned int cnt, sz = 0, oi = 0, pn = 1, m = 1, idx;
 
-	for (count = 0; *(str + count) != '\0'; count++)
+	for (cnt = 0; *(str + cnt) != '\0'; cnt++)
 	{
-		if (size > 0 && (*(str + count) < '0' || *(str + count) > '9'))
+		if (sz > 0 && (*(str + cnt) < '0' || *(str + cnt) > '9'))
 			break;
 
-		if (*(str + count) == '-')
+		if (*(str + cnt) == '-')
 			pn *= -1;
 
-		if ((*(str + count) >= '0') && (*(str + count) <= '9'))
+		if ((*(str + cnt) >= '0') && (*(str + cnt) <= '9'))
 		{
-			if (size > 0)
+			if (sz > 0)
 				m *= 10;
-			size++;
+			sz++;
 		}
 	}
 
-	for (idx = count - size; idx < count; idx++)
+	for (idx = cnt - sz; idx < cnt; idx++)
 	{
 		oi = oi + ((*(str + idx) - 48) * m);
 		m /= 10;

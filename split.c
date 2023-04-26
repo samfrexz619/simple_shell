@@ -46,7 +46,7 @@ char *swap_char(char *inp, int bool)
  * @inp: input
  * Return: nth - returns nth
  */
-void add_nodes(sep_list **head_s, line_ls **head_l, char *inp)
+void add_nodes(sep_ls **head_s, line_ls **head_l, char *inp)
 {
 	int idx;
 	char *line;
@@ -56,11 +56,11 @@ void add_nodes(sep_list **head_s, line_ls **head_l, char *inp)
 	for (idx = 0; inp[idx]; idx++)
 	{
 		if (inp[idx] == ';')
-			add_sep_node_end(head_s, inp[idx]);
+			addSpNodeEnd(head_s, inp[idx]);
 
 		if (inp[idx] == '|' || inp[idx] == '&')
 		{
-			add_sep_node_end(head_s, inp[idx]);
+			addSpNodeEnd(head_s, inp[idx]);
 			idx++;
 		}
 	}
@@ -68,7 +68,7 @@ void add_nodes(sep_list **head_s, line_ls **head_l, char *inp)
 	line = _strtok(inp, ";|&");
 	do {
 		line = swap_char(line, 1);
-		add_line_node_end(head_l, line);
+		addLnNodeEnd(head_l, line);
 		line = _strtok(NULL, ";|&");
 	} while (line != NULL);
 
@@ -80,10 +80,10 @@ void add_nodes(sep_list **head_s, line_ls **head_l, char *inp)
  * @datash: data
  * Return: nth returns - nth
  */
-void move_next(sep_list **list_s, line_ls **list_l, data_sh *datash)
+void move_next(sep_ls **list_s, line_ls **list_l, data_sh *datash)
 {
 	int loop_sep;
-	sep_list *ls_s;
+	sep_ls *ls_s;
 	line_ls *ls_l;
 
 	loop_sep = 1;
@@ -121,7 +121,7 @@ void move_next(sep_list **list_s, line_ls **list_l, data_sh *datash)
  */
 int split_cmd(data_sh *datash, char *inp)
 {
-	sep_list *head_s, *list_s;
+	sep_ls *head_s, *list_s;
 	line_ls *head_l, *list_l;
 	int loop;
 
@@ -149,8 +149,8 @@ int split_cmd(data_sh *datash, char *inp)
 			list_l = list_l->next;
 	}
 
-		free_sep_list(&head_s);
-	free_line_list(&head_l);
+		freeSpLs(&head_s);
+	freeLnls(&head_l);
 
 	if (loop == 0)
 		return (0);

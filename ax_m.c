@@ -3,49 +3,49 @@
  * _memcpy - copies info
  * @newptr: destination
  * @ptr: source
- * @size: size
+ * @sz: size
  * Return: nth - returns nth
  */
-void _memcpy(void *newptr, const void *ptr, unsigned int size)
+void _memcpy(void *newptr, const void *ptr, unsigned int sz)
 {
-	char *char_ptr = (char *)ptr;
-	char *char_newptr = (char *)newptr;
+	char *ch_ptr = (char *)ptr;
+	char *ch_newptr = (char *)newptr;
 	unsigned int idx;
 
-	for (idx = 0; idx < size; idx++)
-		char_newptr[idx] = char_ptr[idx];
+	for (idx = 0; idx < sz; idx++)
+		ch_newptr[idx] = ch_ptr[idx];
 }
 /**
  * _realloc - reallacot memory
  * @ptr: pointer to the memory
- * @old_size: size
- * @new_size: new size
+ * @old_sz: size
+ * @new_sz: new size
  * Return: ptr - returns ptr
  */
-void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
+void *_realloc(void *ptr, unsigned int old_sz, unsigned int new_sz)
 {
 	void *newptr;
 
 	if (ptr == NULL)
-		return (malloc(new_size));
+		return (malloc(new_sz));
 
-	if (new_size == 0)
+	if (new_sz == 0)
 	{
 		free(ptr);
 		return (NULL);
 	}
 
-	if (new_size == old_size)
+	if (new_sz == old_sz)
 		return (ptr);
 
-	newptr = malloc(new_size);
+	newptr = malloc(new_sz);
 	if (newptr == NULL)
 		return (NULL);
 
-	if (new_size < old_size)
-		_memcpy(newptr, ptr, new_size);
+	if (new_sz < old_sz)
+		_memcpy(newptr, ptr, new_sz);
 	else
-		_memcpy(newptr, ptr, old_size);
+		_memcpy(newptr, ptr, old_sz);
 
 	free(ptr);
 	return (newptr);
@@ -53,26 +53,26 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 /**
  * _reallocdp - reallocates memory
  * @ptr: double pointer
- * @old_size: size
- * @new_size: new size
+ * @old_sz: size
+ * @new_sz: new size
  * Return: ptr - returns ptr
  */
-char **_reallocdp(char **ptr, unsigned int old_size, unsigned int new_size)
+char **_reallocdp(char **ptr, unsigned int old_sz, unsigned int new_sz)
 {
 	char **newptr;
 	unsigned int idx;
 
 	if (ptr == NULL)
-		return (malloc(sizeof(char *) * new_size));
+		return (malloc(sizeof(char *) * new_sz));
 
-	if (new_size == old_size)
+	if (new_sz == old_sz)
 		return (ptr);
 
-	newptr = malloc(sizeof(char *) * new_size);
+	newptr = malloc(sizeof(char *) * new_sz);
 	if (newptr == NULL)
 		return (NULL);
 
-	for (idx = 0; idx < old_size; idx++)
+	for (idx = 0; idx < old_sz; idx++)
 		newptr[idx] = ptr[idx];
 
 	free(ptr);

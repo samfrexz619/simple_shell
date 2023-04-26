@@ -49,7 +49,7 @@ typedef struct sep_lists
 {
 	char separator;
 	struct sep_lists *next;
-} sep_list;
+} sep_ls;
 /**
  * struct line_lists - linked list
  * @line: cmd line
@@ -119,8 +119,8 @@ int cmd_exec(data_sh *datash);
 
 /* split.c */
 char *swap_char(char *inp, int bool);
-void add_nodes(sep_list **head_s, line_ls **head_l, char *inp);
-void move_next(sep_list **list_s, line_ls **list_l, data_sh *datash);
+void add_nodes(sep_ls **head_s, line_ls **head_l, char *inp);
+void move_next(sep_ls **list_s, line_ls **list_l, data_sh *datash);
 int split_cmd(data_sh *datash, char *inp);
 char **split_line(char *inp);
 
@@ -161,23 +161,23 @@ void xh_aka(void);
 void xh_cd(void);
 
 /* ax_ls.c */
-sep_list *add_sep_node_end(sep_list **head, char sep);
-void free_sep_list(sep_list **head);
-line_ls *add_line_node_end(line_ls **head, char *line);
-void free_line_list(line_ls **head);
+sep_ls *addSpNodeEnd(sep_ls **head, char sep);
+void freeSpLs(sep_ls **head);
+line_ls *addLnNodeEnd(line_ls **head, char *line);
+void freeLnls(line_ls **head);
 
 /* ax_ls1.c */
-st_var *add_rvar_node(st_var **head, int lenVar, char *var, int lenVal);
-void free_rvar_list(st_var **head);
+st_var *addRvarNd(st_var **head, int lenVar, char *var, int lenVal);
+void freeRvarLs(st_var **head);
 
 /* ax_m.c */
-void _memcpy(void *newptr, const void *ptr, unsigned int size);
-void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
-char **_reallocdp(char **ptr, unsigned int old_size, unsigned int new_size);
+void _memcpy(void *newptr, const void *ptr, unsigned int sz);
+void *_realloc(void *ptr, unsigned int old_sz, unsigned int new_sz);
+char **_reallocdp(char **ptr, unsigned int old_sz, unsigned int new_sz);
 
 /* ax_stdlb.c */
-int get_len(int num);
-char *aux_itoa(int num);
+int getLength(int num);
+char *x_itoa(int num);
 int _atoi(char *str);
 
 /* ax_str*/
@@ -195,7 +195,7 @@ char *_strtok(char str[], const char *dlim);
 int _isdigit(const char *str);
 
 /* ax_str2.c */
-void rev_str(char *str);
+void revStr(char *str);
 
 /* env.c */
 char *_getenv(const char *name, char **_environ);
@@ -216,9 +216,9 @@ int exit_shell(data_sh *datash);
 /* g_sigint.c */
 void get_sigint(int sig);
 
-/* rep_var.c */
+/* r_var.c */
 void check_env(st_var **hd, char *inp, data_sh *data);
-int check_vars(st_var **hd, char *inp, char *st, data_sh *data);
+int check_vars(st_var **hd, char *inp, char *stat, data_sh *data);
 char *replaced_input(st_var **head, char *inp, char *new_inp, int nlen);
 char *rep_var(char *inp, data_sh *datash);
 

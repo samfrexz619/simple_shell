@@ -1,23 +1,23 @@
 #include "main.h"
 /**
- * rev_str - reverses a str
+ * revStr - reverses a str
  * @str: string
  * Return: nth - return nth
  */
-void rev_str(char *str)
+void revStr(char *str)
 {
-	int count = 0, idx, j;
+	int cnt = 0, idx, j;
 	char *sr, temp;
 
-	while (count >= 0)
+	while (cnt >= 0)
 	{
-		if (str[count] == '\0')
+		if (str[cnt] == '\0')
 			break;
-		count++;
+		cnt++;
 	}
 	sr = str;
 
-	for (idx = 0; idx < (count - 1); idx++)
+	for (idx = 0; idx < (cnt - 1); idx++)
 	{
 		for (j = idx + 1; j > 0; j--)
 		{

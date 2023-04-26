@@ -25,14 +25,14 @@ void cd_dot(data_sh *datash)
 		return;
 	}
 	cp_strtok_pwd = cp_pwd;
-	rev_str(cp_strtok_pwd);
+	revStr(cp_strtok_pwd);
 	cp_strtok_pwd = _strtok(cp_strtok_pwd, "/");
 	if (cp_strtok_pwd != NULL)
 	{
 		cp_strtok_pwd = _strtok(NULL, "\0");
 
 		if (cp_strtok_pwd != NULL)
-			rev_str(cp_strtok_pwd);
+			revStr(cp_strtok_pwd);
 	}
 	if (cp_strtok_pwd != NULL)
 	{

@@ -49,7 +49,7 @@ void _set(data_sh *datash, char **av)
 	}
 
 	datash->_environ[idx] = NULL;
-	datash->pid = aux_itoa(getpid());
+	datash->pid = x_itoa(getpid());
 }
 
 /**
