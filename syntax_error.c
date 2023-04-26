@@ -3,7 +3,7 @@
  * count_char - counts the repetitions of char
  * @inp: input
  * @idx: index
- * Return: counts
+ * Return: Counts
  */
 int count_char(char *inp, int idx)
 {
