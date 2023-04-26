@@ -31,17 +31,17 @@ char *del_comment(char *inp)
 	return (inp);
 }
 /**
- * shell_loop - shell loop
+ * shell_lp - shell loop
  * @datash: data
  * Return: nth - returns nth
  */
-void shell_loop(data_sh *datash)
+void shell_lp(data_sh *datash)
 {
-	int loop, idx_eof;
+	int lp, idx_eof;
 	char *inp;
 
-	loop = 1;
-	while (loop == 1)
+	lp = 1;
+	while (lp == 1)
 	{
 		write(STDIN_FILENO, "($)  ", 4);
 		inp = read_line(&idx_eof);
@@ -51,20 +51,20 @@ void shell_loop(data_sh *datash)
 			if (inp == NULL)
 				continue;
 
-			if (check_syntax_err(datash, inp) == 1)
+			if (check_err(datash, inp) == 1)
 			{
 				datash->status = 2;
 				free(inp);
 				continue;
 			}
 			inp = rep_var(inp, datash);
-			loop = split_cmd(datash, inp);
+			lp = split_cmd(datash, inp);
 			datash->counter += 1;
 			free(inp);
 		}
 		else
 		{
-			loop = 0;
+			lp = 0;
 			free(inp);
 		}
 	}

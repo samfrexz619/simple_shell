@@ -1,10 +1,10 @@
 #include "main.h"
 /**
- * get_help - help msg
+ * _help - help msg
  * @datash: data
  * Return: 0
  */
-int get_help(data_sh *datash)
+int _help(data_sh *datash)
 {
 	if (datash->args[1] == 0)
 		xh_gen();

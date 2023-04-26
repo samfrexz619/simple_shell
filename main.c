@@ -65,7 +65,7 @@ int main(int ac, char **av)
 
 	signal(SIGINT, get_sigint);
 	_set(&datash, av);
-	shell_loop(&datash);
+	shell_lp(&datash);
 	free_data(&datash);
 	if (datash.status < 0)
 		return (255);

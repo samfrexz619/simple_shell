@@ -35,19 +35,19 @@ void assign_line(char **lineptr, size_t *nl, char *buffer, size_t jb)
  * get_line - read input from stream
  * @lineptr: stores input str
  * @nl: size of lineptr
- * @stream: stream
+ * @strm: stream
  * Return: num of bytes - return bytes
  */
-ssize_t get_line(char **lineptr, size_t *nl, FILE *stream)
+ssize_t getLine(char **lineptr, size_t *nl, FILE *strm)
 {
 	int idx;
 	static ssize_t inp;
-	ssize_t retval;
+	ssize_t rval;
 	char *buffer;
 	char t = 'z';
 
 	if (inp == 0)
-		fflush(stream);
+		fflush(strm);
 	else
 		return (-1);
 	inp = 0;
@@ -75,8 +75,8 @@ ssize_t get_line(char **lineptr, size_t *nl, FILE *stream)
 	}
 	buffer[inp] = '\0';
 	assign_line(lineptr, nl, buffer, inp);
-	retval = inp;
+	rval = inp;
 	if (idx != 0)
 		inp = 0;
-	return (retval);
+	return (rval);
 }

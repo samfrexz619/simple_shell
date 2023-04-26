@@ -105,10 +105,10 @@ int cd_sh(data_sh *datash);
 
 /* syntax_error.c */
 int count_char(char *inp, int idx);
-int err_sep_op(char *inp, int idx, char last);
-int first_char(char *inp, int *idx);
-void print_syntax_err(data_sh *datash, char *inp, int idx, int bool);
-int check_syntax_err(data_sh *datash, char *inp);
+int errSep(char *inp, int idx, char lst);
+int first_ch(char *inp, int *idx);
+void print_err(data_sh *datash, char *inp, int idx, int bool);
+int check_err(data_sh *datash, char *inp);
 
 /* cmdexec.c */
 int cdir(char *path, int *idx);
@@ -118,19 +118,19 @@ int errCmd(char *dr, data_sh *datash);
 int _exec(data_sh *datash);
 
 /* split.c */
-char *swap_char(char *inp, int bool);
-void add_nodes(sep_ls **head_s, line_ls **head_l, char *inp);
+char *swap_ch(char *inp, int bool);
+void addNode(sep_ls **hd_s, line_ls **hd_l, char *inp);
 void move_next(sep_ls **list_s, line_ls **list_l, data_sh *datash);
 int split_cmd(data_sh *datash, char *inp);
-char **split_line(char *inp);
+char **split_ln(char *inp);
 
 /* get_line.c */
 void assign_line(char **lineptr, size_t *nl, char *buffer, size_t jb);
-ssize_t get_line(char **lineptr, size_t *nl, FILE *stream);
+ssize_t getLine(char **lineptr, size_t *nl, FILE *strm);
 
 /* sh_loop.c */
 char *del_comment(char *inp);
-void shell_loop(data_sh *datash);
+void shell_lp(data_sh *datash);
 
 /* rd_line.c */
 char *read_line(int *idx_eof);
@@ -211,7 +211,7 @@ int _unSetEnv(data_sh *datash);
 int exec_line(data_sh *datash);
 
 /* ext_shell.c */
-int exit_shell(data_sh *datash);
+int xt_shell(data_sh *datash);
 
 /* g_sigint.c */
 void get_sigint(int sig);
@@ -223,5 +223,5 @@ char *replaced_input(st_var **head, char *inp, char *new_inp, int nlen);
 char *rep_var(char *inp, data_sh *datash);
 
 /* g_help.c */
-int get_help(data_sh *datash);
+int _help(data_sh *datash);
 #endif

@@ -8,11 +8,11 @@ int (*get_builtin(char *cmd))(data_sh *)
 {
 	built_in builtins[] = {
 		{ "env", prnt_env },
-		{ "exit", exit_shell },
+		{ "exit", xt_shell },
 		{ "setenv", _setEnv },
 		{ "unsetenv", _unSetEnv },
 		{ "cd", cd_sh },
-		{ "help", get_help },
+		{ "help", _help },
 		{ NULL, NULL }
 	};
 	int idx;

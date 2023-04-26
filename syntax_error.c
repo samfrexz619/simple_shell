@@ -13,13 +13,13 @@ int count_char(char *inp, int idx)
 	return (idx);
 }
 /**
- * err_sep_op - finds syntax errors
+ * errSep - finds syntax errors
  * @inp: input
  * @idx: index
- * @last: last char
+ * @lst: last char
  * Return: 0 when no error
  */
-int err_sep_op(char *inp, int idx, char last)
+int errSep(char *inp, int idx, char lst)
 {
 	int num;
 
@@ -28,18 +28,18 @@ int err_sep_op(char *inp, int idx, char last)
 		return (0);
 
 	if (*inp == ' ' || *inp == '\t')
-		return (err_sep_op(inp + 1, idx + 1, last));
+		return (errSep(inp + 1, idx + 1, lst));
 
 	if (*inp == ';')
-		if (last == '|' || last == '&' || last == ';')
+		if (lst == '|' || lst == '&' || lst == ';')
 			return (idx);
 
 	if (*inp == '|')
 	{
-		if (last == ';' || last == '&')
+		if (lst == ';' || lst == '&')
 			return (idx);
 
-		if (last == '|')
+		if (lst == '|')
 		{
 			num = count_char(inp, 0);
 			if (num == 0 || num > 1)
@@ -49,10 +49,10 @@ int err_sep_op(char *inp, int idx, char last)
 
 	if (*inp == '&')
 	{
-		if (last == ';' || last == '|')
+		if (lst == ';' || lst == '|')
 			return (idx);
 
-		if (last == '&')
+		if (lst == '&')
 		{
 			num = count_char(inp, 0);
 			if (num == 0 || num > 1)
@@ -60,15 +60,15 @@ int err_sep_op(char *inp, int idx, char last)
 		}
 	}
 
-	return (err_sep_op(inp + 1, idx + 1, *inp));
+	return (errSep(inp + 1, idx + 1, *inp));
 }
 /**
- * first_char - get index of the first char
+ * first_ch - get index of the first char
  * @inp: input
  * @idx: index
  * Return: 1 whn there's error.
  */
-int first_char(char *inp, int *idx)
+int first_ch(char *inp, int *idx)
 {
 	for (*idx = 0; inp[*idx]; *idx += 1)
 	{
@@ -84,14 +84,14 @@ int first_char(char *inp, int *idx)
 	return (0);
 }
 /**
- * print_syntax_err - prints when an err is found
+ * print_err - prints when an err is found
  * @datash: data
  * @inp: input
  * @idx: index
  * @bool: contrl msg err
  * Return: nothing
  */
-void print_syntax_err(data_sh *datash, char *inp, int idx, int bool)
+void print_err(data_sh *datash, char *inp, int idx, int bool)
 {
 	char *msg, *msg2, *msg3, *err, *counter;
 	int len;
@@ -134,28 +134,28 @@ void print_syntax_err(data_sh *datash, char *inp, int idx, int bool)
 	free(counter);
 }
 /**
- * check_syntax_err - print syntax err
+ * check_err - print syntax err
  * @datash: data
  * @inp: input
  * Return: 1 when there's err
  */
-int check_syntax_err(data_sh *datash, char *inp)
+int check_err(data_sh *datash, char *inp)
 {
 	int beg = 0;
 	int f_ch = 0;
 	int idx = 0;
 
-	f_ch = first_char(inp, &beg);
+	f_ch = first_ch(inp, &beg);
 	if (f_ch == -1)
 	{
-		print_syntax_err(datash, inp, beg, 0);
+		print_err(datash, inp, beg, 0);
 		return (1);
 	}
 
-	idx = err_sep_op(inp + beg, 0, *(inp + beg));
+	idx = errSep(inp + beg, 0, *(inp + beg));
 	if (idx != 0)
 	{
-		print_syntax_err(datash, inp, beg + idx, 1);
+		print_err(datash, inp, beg + idx, 1);
 		return (1);
 	}
 	return (0);

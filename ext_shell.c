@@ -1,10 +1,10 @@
 #include "main.h"
 /**
- * exit_shell - exits the shell
+ * xt_shell - exits the shell
  * @datash: data
  * Return: 0
  */
-int exit_shell(data_sh *datash)
+int xt_shell(data_sh *datash)
 {
 	unsigned int ustat;
 	int is_dig;

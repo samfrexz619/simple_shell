@@ -1,11 +1,11 @@
 #include "main.h"
 /**
- * swap_char - swap | and &
+ * swap_ch - swap | and &
  * @inp: input
  * @bool: type swap
  * Return: swapped str - returns swapped str
  */
-char *swap_char(char *inp, int bool)
+char *swap_ch(char *inp, int bool)
 {
 	int idx;
 
@@ -40,37 +40,37 @@ char *swap_char(char *inp, int bool)
 	return (inp);
 }
 /**
- * add_nodes - add separator
- * @head_s: head
- * @head_l: head of cmd lines list
+ * addNode - add separator
+ * @hd_s: head
+ * @hd_l: head of cmd lines list
  * @inp: input
  * Return: nth - returns nth
  */
-void add_nodes(sep_ls **head_s, line_ls **head_l, char *inp)
+void addNode(sep_ls **hd_s, line_ls **hd_l, char *inp)
 {
 	int idx;
-	char *line;
+	char *ln;
 
-	inp = swap_char(inp, 0);
+	inp = swap_ch(inp, 0);
 
 	for (idx = 0; inp[idx]; idx++)
 	{
 		if (inp[idx] == ';')
-			addSpNodeEnd(head_s, inp[idx]);
+			addSpNodeEnd(hd_s, inp[idx]);
 
 		if (inp[idx] == '|' || inp[idx] == '&')
 		{
-			addSpNodeEnd(head_s, inp[idx]);
+			addSpNodeEnd(hd_s, inp[idx]);
 			idx++;
 		}
 	}
 
-	line = _strtok(inp, ";|&");
+	ln = _strtok(inp, ";|&");
 	do {
-		line = swap_char(line, 1);
-		addLnNodeEnd(head_l, line);
-		line = _strtok(NULL, ";|&");
-	} while (line != NULL);
+		ln = swap_ch(ln, 1);
+		addLnNodeEnd(hd_l, ln);
+		ln = _strtok(NULL, ";|&");
+	} while (ln != NULL);
 
 }
 /**
@@ -128,7 +128,7 @@ int split_cmd(data_sh *datash, char *inp)
 	head_s = NULL;
 	head_l = NULL;
 
-	add_nodes(&head_s, &head_l, inp);
+	addNode(&head_s, &head_l, inp);
 
 	list_s = head_s;
 	list_l = head_l;
@@ -136,7 +136,7 @@ int split_cmd(data_sh *datash, char *inp)
 	while (list_l != NULL)
 	{
 		datash->inp = list_l->line;
-		datash->args = split_line(datash->inp);
+		datash->args = split_ln(datash->inp);
 		loop = exec_line(datash);
 		free(datash->args);
 
@@ -157,19 +157,19 @@ int split_cmd(data_sh *datash, char *inp)
 	return (1);
 }
 /**
- * split_line - tokenizes input str
+ * split_ln - tokenizes input str
  * @inp: input
  * Return: splitted str
  */
-char **split_line(char *inp)
+char **split_ln(char *inp)
 {
-	size_t bsize;
+	size_t bsz;
 	size_t idx;
 	char **tokens;
 	char *token;
 
-	bsize = TOK_BSIZE;
-	tokens = malloc(sizeof(char *) * (bsize));
+	bsz = TOK_BSIZE;
+	tokens = malloc(sizeof(char *) * (bsz));
 	if (tokens == NULL)
 	{
 		write(STDERR_FILENO, ": allocation error\n", 18);
@@ -181,10 +181,10 @@ char **split_line(char *inp)
 
 	for (idx = 1; token != NULL; idx++)
 	{
-		if (idx == bsize)
+		if (idx == bsz)
 		{
-			bsize += TOK_BSIZE;
-			tokens = _reallocdp(tokens, idx, sizeof(char *) * bsize);
+			bsz += TOK_BSIZE;
+			tokens = _reallocdp(tokens, idx, sizeof(char *) * bsz);
 			if (tokens == NULL)
 			{
 				write(STDERR_FILENO, ": allocation error\n", 18);
