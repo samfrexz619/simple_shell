@@ -1,7 +1,7 @@
 #include "main.h"
 /**
  * aux_help - help info
- * Return: nth
+ * Returns nth
  */
 void aux_help(void)
 {
@@ -15,7 +15,7 @@ void aux_help(void)
 }
 /**
  * aux_help_aka - help info
- * Return: nth
+ * Returns nth
  */
 void aux_help_aka(void)
 {
@@ -27,7 +27,7 @@ void aux_help_aka(void)
 }
 /**
  * aux_help_cd - help info
- * Return: nth
+ * Returns nth
  */
 void aux_help_cd(void)
 {
