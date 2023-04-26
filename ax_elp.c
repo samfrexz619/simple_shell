@@ -14,7 +14,7 @@ void aux_help_env(void)
 }
 /**
  * aux_help_setenv - help info
- * Return: nth
+ * Returns nth
  */
 void aux_help_setenv(void)
 {
@@ -28,7 +28,7 @@ void aux_help_setenv(void)
 }
 /**
  * aux_help_unsetenv - help info
- * Return: nth
+ * Returns nth
  */
 void aux_help_unsetenv(void)
 {
@@ -40,7 +40,7 @@ void aux_help_unsetenv(void)
 }
 /**
  * aux_help_gen - entry point for help info
- * Return: nth
+ * Returns nth
  */
 void aux_help_gen(void)
 {
@@ -62,7 +62,7 @@ void aux_help_gen(void)
 }
 /**
  * aux_help_exit - help info
- * Return: nth
+ * Returns nth
  */
 void aux_help_exit(void)
 {
