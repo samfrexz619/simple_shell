@@ -100,7 +100,7 @@ char *errNotf(data_sh *datash)
 	_strcat(err, _str);
 	_strcat(err, ": ");
 	_strcat(err, datash->args[0]);
-	_strcat(err, ": 404 or not a command\n");
+	_strcat(err, ":not found\n");
 	_strcat(err, "\0");
 	free(_str);
 	return (err);
@@ -116,6 +116,7 @@ char *errExitsh(data_sh *datash)
 	char *err;
 	char *_str;
 
+	
 	_str = x_itoa(datash->counter);
 	len = _strlen(datash->av[0]) + _strlen(_str);
 	len += _strlen(datash->args[0]) + _strlen(datash->args[1]) + 23;
